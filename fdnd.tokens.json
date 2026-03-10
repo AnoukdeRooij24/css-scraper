@@ -22,6 +22,38 @@
           "$type": "color",
           "$value": "#ECECEC"
         }
+      },
+      "radius": {
+        "l": {
+          "$type": "borderRadius",
+          "$value": "1.5rem"
+        },
+        "s": {
+          "$type": "borderRadius",
+          "$value": "0.5rem"
+        }
+      },
+      "font": {
+        "$type": "fontFamilies",
+        "$value": "Open Sans"
+      },
+      "fontsize": {
+        "h1": {
+          "$type": "fontSizes",
+          "$value": "2,5rem"
+        },
+        "h2": {
+          "$type": "fontSizes",
+          "$value": "2,5rem"
+        },
+        "h3": {
+          "$type": "fontSizes",
+          "$value": "2rem"
+        },
+        "p": {
+          "$type": "fontSizes",
+          "$value": "1,25rem"
+        }
       }
     }
   },
@@ -31,7 +63,7 @@
         "font-family": {
           "default": {
             "$type": "fontFamilies",
-            "$value": "{fdnd.fontfamily}"
+            "$value": "{fdnd.font}"
           },
           "monospace": {
             "$type": "fontFamilies",
@@ -45,37 +77,37 @@
           },
           "bold": {
             "$type": "fontWeights",
-            "$value": "{fdnd.fontweight.bold}"
+            "$value": "bold"
           }
         },
         "font-size": {
           "sm": {
             "$type": "fontSizes",
-            "$value": "0.875rem"
+            "$value": "{fdnd.fontsize.p}"
           },
           "md": {
             "$type": "fontSizes",
-            "$value": "1rem"
+            "$value": "{fdnd.fontsize.p}"
           },
           "lg": {
             "$type": "fontSizes",
-            "$value": "1.25rem"
+            "$value": "{fdnd.fontsize.h3}"
           },
           "xl": {
             "$type": "fontSizes",
-            "$value": "1.5rem"
+            "$value": "{fdnd.fontsize.h2}"
           },
           "2xl": {
             "$type": "fontSizes",
-            "$value": "1.75rem"
+            "$value": "{fdnd.fontsize.h1}"
           },
           "3xl": {
             "$type": "fontSizes",
-            "$value": "2rem"
+            "$value": "{fdnd.fontsize.h1}"
           },
           "4xl": {
             "$type": "fontSizes",
-            "$value": "2.5rem"
+            "$value": "{fdnd.fontsize.h1}"
           }
         },
         "line-height": {
@@ -327,7 +359,7 @@
           },
           "color-default": {
             "$type": "color",
-            "$value": "{fdnd.color.yelow}"
+            "$value": "{fdnd.color.violet}"
           },
           "color-hover": {
             "$type": "color",
@@ -401,7 +433,7 @@
           },
           "color-document": {
             "$type": "color",
-            "$value": "{basis.color.accent-1.color-document}"
+            "$value": "{fdnd.color.blue}"
           }
         },
         "action-2": {
@@ -1045,23 +1077,23 @@
         "accent-3-inverse": {
           "bg-document": {
             "$type": "color",
-            "$value": "{fdnd.color.yelow}"
+            "$value": "{fdnd.color.violet}"
           },
           "bg-subtle": {
             "$type": "color",
-            "$value": "{fdnd.color.yelow}"
+            "$value": "{fdnd.color.violet}"
           },
           "bg-default": {
             "$type": "color",
-            "$value": "{fdnd.color.yelow}"
+            "$value": "{fdnd.color.violet}"
           },
           "bg-hover": {
             "$type": "color",
-            "$value": "{fdnd.color.yelow}"
+            "$value": "{fdnd.color.violet}"
           },
           "bg-active": {
             "$type": "color",
-            "$value": "{fdnd.color.yelow}"
+            "$value": "{fdnd.color.violet}"
           },
           "border-subtle": {
             "$type": "color",
