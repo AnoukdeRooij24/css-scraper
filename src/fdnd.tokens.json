@@ -5088,7 +5088,7 @@
           "$value": "{basis.color.default.bg-document}"
         },
         "width": {
-          "$type": "dimension",
+          "$type": "other",
           "$value": "fit-content",
           "$description": "[code-only]"
         },
