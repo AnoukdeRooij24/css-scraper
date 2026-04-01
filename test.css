@@ -1,0 +1,30 @@
+div {
+    height: 200px;
+    width: 200px;
+}
+
+div:nth-of-type(1) {
+    background-color: var(--fdnd-color-violet);
+    border-radius: var(--basis-border-radius-sm);
+}
+
+div:nth-of-type(2) {
+    background-color: var(--fdnd-color-cyaan);
+    border-radius: var(--basis-border-radius-md);
+}
+
+div:nth-of-type(3) {
+    background-color: var(--fdnd-color-yelow);
+    border-radius: var(--basis-border-radius-lg);
+}
+
+div:nth-of-type(4) {
+    background-color: var(--fdnd-color-blue);
+    border-radius: var(--basis-border-radius-round);
+}
+
+h1 {
+    font-size: var(--fdnd-fontsize-h1);
+    font-family: var(--fdnd-font);
+    font-weight: var(--fdnd-fontweight-bold);
+}
