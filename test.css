@@ -28,3 +28,18 @@ h1 {
     font-family: var(--fdnd-font);
     font-weight: var(--fdnd-fontweight-bold);
 }
+
+h2 {
+    font-size: var(--fdnd-fontsize-h2);
+    font-family: var(--fdnd-font);
+}
+
+h3 {
+    font-size: var(--fdnd-fontsize-h3);
+    font-family: var(--fdnd-font);
+}
+
+p {
+    font-size: var(--fdnd-fontsize-p);
+    font-family: var(--fdnd-font);
+}
