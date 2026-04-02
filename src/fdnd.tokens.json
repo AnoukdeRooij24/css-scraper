@@ -40,11 +40,11 @@
       "fontsize": {
         "h1": {
           "$type": "fontSizes",
-          "$value": "2,5rem"
+          "$value": "2.5rem"
         },
         "h2": {
           "$type": "fontSizes",
-          "$value": "2,5rem"
+          "$value": "2.5rem"
         },
         "h3": {
           "$type": "fontSizes",
@@ -52,7 +52,7 @@
         },
         "p": {
           "$type": "fontSizes",
-          "$value": "1,25rem"
+          "$value": "1.25rem"
         }
       },
       "fontweight": {
@@ -5088,7 +5088,7 @@
           "$value": "{basis.color.default.bg-document}"
         },
         "width": {
-          "$type": "other",
+          "$type": "dimension",
           "$value": "fit-content",
           "$description": "[code-only]"
         },
