@@ -1,5 +1,5 @@
 {
-  "name": "stage-anouk",
+  "name": "@frameless/stage-anouk",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,8 +8,14 @@
     "build": "node style-dictionary.mjs"
   },
   "keywords": [],
-  "author": "",
-  "license": "SEE LICENSE IN README.md",
+  "author": "Anouk de Rooij",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git+ssh",
+    "url": "git@github.com:frameless/stage-anouk.git"
+  },  "license": "SEE LICENSE IN README.md",
   "packageManager": "pnpm@10.30.3",
   "devDependencies": {
     "style-dictionary": "^5.3.3"
