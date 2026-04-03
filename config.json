@@ -6,27 +6,27 @@
   },
   "platforms": {
     "css": {
-        "transformGroups": "tokens-studio",
-        "transforms": ["name/kebab"],
-        "buildPath": "dist/",
-        "files": [
-          {
-            "destination": "theme.css",
-            "format": "css/variables",
-            "options": {
-              "elector": ".${themeName}",
-              "outputReferences": true
-            }
-          },
-          {
-            "destination": "variables.css",
-            "format": "css/variables",
-            "options": {
-              "selector": ":root",
-              "outputReferences": true
-            }
+      "transformGroups": "tokens-studio",
+      "transforms": ["name/kebab"],
+      "buildPath": "dist/",
+      "files": [
+        {
+          "destination": "theme.css",
+          "format": "css/variables",
+          "options": {
+            "elector": ".${themeName}",
+            "outputReferences": true
           }
-        ]
-      }
+        },
+        {
+          "destination": "variables.css",
+          "format": "css/variables",
+          "options": {
+            "selector": ":root",
+            "outputReferences": true
+          }
+        }
+      ]
+    }
   }
 }
