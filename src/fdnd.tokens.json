@@ -561,59 +561,59 @@
         "info": {
           "bg-document": {
             "$type": "color",
-            "$value": "#FBFCFD"
+            "$value": "{fdnd.color.default}"
           },
           "bg-subtle": {
             "$type": "color",
-            "$value": "#F4F7FA"
+            "$value": "{fdnd.color.default}"
           },
           "bg-default": {
             "$type": "color",
-            "$value": "#ECF1F7"
+            "$value": "{fdnd.color.default}"
           },
           "bg-hover": {
             "$type": "color",
-            "$value": "#E4ECF4"
+            "$value": "{fdnd.color.default}"
           },
           "bg-active": {
             "$type": "color",
-            "$value": "#DDE6F1"
+            "$value": "{fdnd.color.violet}"
           },
           "border-subtle": {
             "$type": "color",
-            "$value": "#B0C6DF"
+            "$value": "{fdnd.color.violet}"
           },
           "border-default": {
             "$type": "color",
-            "$value": "#5C89BE"
+            "$value": "{fdnd.color.violet}"
           },
           "border-hover": {
             "$type": "color",
-            "$value": "#4E7FB8"
+            "$value": "{fdnd.color.violet}"
           },
           "border-active": {
             "$type": "color",
-            "$value": "#3F74B2"
+            "$value": "{fdnd.color.violet}"
           },
           "color-default": {
             "$type": "color",
-            "$value": "#1B59A4"
+            "$value": "{fdnd.color.violet}"
           },
           "color-hover": {
             "$type": "color",
-            "$value": "#04499A"
+            "$value": "{fdnd.color.violet}"
           },
           "color-active": {
             "$type": "color",
-            "$value": "#003B81"
+            "$value": "{fdnd.color.violet}"
           },
           "color-subtle": {
             "$type": "color",
-            "$value": "#2964AA"
+            "$value": "{fdnd.color.violet}"
           },
           "color-document": {
             "$type": "color",
-            "$value": "#001B3C"
+            "$value": "{fdnd.color.violet}"
           }
         },
         "negative": {
@@ -1315,59 +1315,59 @@
         "info-inverse": {
           "bg-document": {
             "$type": "color",
-            "$value": "#00234D"
+            "$value": "{fdnd.color.blue}"
           },
           "bg-subtle": {
             "$type": "color",
-            "$value": "#001B3C"
+            "$value": "{fdnd.color.blue}"
           },
           "bg-default": {
             "$type": "color",
-            "$value": "#1B59A4"
+            "$value": "{fdnd.color.blue}"
           },
           "bg-hover": {
             "$type": "color",
-            "$value": "#04499A"
+            "$value": "{fdnd.color.blue}"
           },
           "bg-active": {
             "$type": "color",
-            "$value": "#003B81"
+            "$value": "{fdnd.color.blue}"
           },
           "border-subtle": {
             "$type": "color",
-            "$value": "#004494"
+            "$value": "{fdnd.color.blue}"
           },
           "border-default": {
             "$type": "color",
-            "$value": "#B8CBE2"
+            "$value": "{fdnd.color.blue}"
           },
           "border-hover": {
             "$type": "color",
-            "$value": "#C6D6E8"
+            "$value": "{fdnd.color.blue}"
           },
           "border-active": {
             "$type": "color",
-            "$value": "#D5E1EE"
+            "$value": "{fdnd.color.blue}"
           },
           "color-default": {
             "$type": "color",
-            "$value": "#FFFFFF"
+            "$value": "{fdnd.color.violet}"
           },
           "color-hover": {
             "$type": "color",
-            "$value": "#FFFFFF"
+            "$value": "{fdnd.color.violet}"
           },
           "color-active": {
             "$type": "color",
-            "$value": "#FFFFFF"
+            "$value": "{fdnd.color.violet}"
           },
           "color-subtle": {
             "$type": "color",
-            "$value": "#B0C6DF"
+            "$value": "{fdnd.color.violet}"
           },
           "color-document": {
             "$type": "color",
-            "$value": "#FFFFFF"
+            "$value": "{fdnd.color.violet}"
           }
         },
         "negative-inverse": {
