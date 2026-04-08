@@ -14,7 +14,7 @@
           "destination": "theme.css",
           "format": "css/variables",
           "options": {
-            "elector": ".${themeName}",
+            "selector": ".fdnd-theme",
             "outputReferences": true
           }
         },
