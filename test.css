@@ -43,3 +43,7 @@ p {
   font-size: var(--fdnd-fontsize-p);
   font-family: var(--fdnd-font);
 }
+
+.utrecht-button--primary-action {
+
+}
