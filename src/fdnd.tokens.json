@@ -561,59 +561,59 @@
         "info": {
           "bg-document": {
             "$type": "color",
-            "$value": "{fdnd.color.default}"
+            "$value": "#FBFCFD"
           },
           "bg-subtle": {
             "$type": "color",
-            "$value": "{fdnd.color.default}"
+            "$value": "#F4F7FA"
           },
           "bg-default": {
             "$type": "color",
-            "$value": "{fdnd.color.default}"
+            "$value": "#ECF1F7"
           },
           "bg-hover": {
             "$type": "color",
-            "$value": "{fdnd.color.default}"
+            "$value": "#E4ECF4"
           },
           "bg-active": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#DDE6F1"
           },
           "border-subtle": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#B0C6DF"
           },
           "border-default": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#5C89BE"
           },
           "border-hover": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#4E7FB8"
           },
           "border-active": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#3F74B2"
           },
           "color-default": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#1B59A4"
           },
           "color-hover": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#04499A"
           },
           "color-active": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#003B81"
           },
           "color-subtle": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#2964AA"
           },
           "color-document": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#001B3C"
           }
         },
         "negative": {
@@ -1315,59 +1315,59 @@
         "info-inverse": {
           "bg-document": {
             "$type": "color",
-            "$value": "{fdnd.color.blue}"
+            "$value": "#00234D"
           },
           "bg-subtle": {
             "$type": "color",
-            "$value": "{fdnd.color.blue}"
+            "$value": "#001B3C"
           },
           "bg-default": {
             "$type": "color",
-            "$value": "{fdnd.color.blue}"
+            "$value": "#1B59A4"
           },
           "bg-hover": {
             "$type": "color",
-            "$value": "{fdnd.color.blue}"
+            "$value": "#04499A"
           },
           "bg-active": {
             "$type": "color",
-            "$value": "{fdnd.color.blue}"
+            "$value": "#003B81"
           },
           "border-subtle": {
             "$type": "color",
-            "$value": "{fdnd.color.blue}"
+            "$value": "#004494"
           },
           "border-default": {
             "$type": "color",
-            "$value": "{fdnd.color.blue}"
+            "$value": "#B8CBE2"
           },
           "border-hover": {
             "$type": "color",
-            "$value": "{fdnd.color.blue}"
+            "$value": "#C6D6E8"
           },
           "border-active": {
             "$type": "color",
-            "$value": "{fdnd.color.blue}"
+            "$value": "#D5E1EE"
           },
           "color-default": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#FFFFFF"
           },
           "color-hover": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#FFFFFF"
           },
           "color-active": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#FFFFFF"
           },
           "color-subtle": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#B0C6DF"
           },
           "color-document": {
             "$type": "color",
-            "$value": "{fdnd.color.violet}"
+            "$value": "#FFFFFF"
           }
         },
         "negative-inverse": {
@@ -15442,9 +15442,7 @@
       "components/page-footer/amsterdam",
       "components/page-footer/utrecht",
       "components/article",
-      "components/listbox",
-      "color-scheme-dark/common",
-      "color-scheme-dark/components/progress-list/todo"
+      "components/listbox"
     ]
   }
 }

@@ -44,6 +44,9 @@ p {
   font-family: var(--fdnd-font);
 }
 
-.utrecht-button--primary-action {
-
+.test-button {
+  font-size: var(--fdnd-fontsize-p);
+  font-family: var(--fdnd-font);
+  border-radius: var(--fdnd-radius-s);
+  background-color: var(--fdnd-color-cyaan);
 }
