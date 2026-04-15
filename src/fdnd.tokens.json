@@ -15442,7 +15442,8 @@
       "components/page-footer/amsterdam",
       "components/page-footer/utrecht",
       "components/article",
-      "components/listbox"
+      "components/listbox",
+      "color-scheme-dark/common"
     ]
   }
 }
