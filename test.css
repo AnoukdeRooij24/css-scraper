@@ -1,6 +1,10 @@
+/* body {
+  background-color: var(--basis-color-default-bg-document);
+} */
+
 div {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
 }
 
 div:nth-of-type(1) {
@@ -49,4 +53,49 @@ p {
   font-family: var(--fdnd-font);
   border-radius: var(--fdnd-radius-s);
   background-color: var(--fdnd-color-cyaan);
+  height: fit-content;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: .5em;
+}
+
+button {
+  font-size: var(--basis-text-font-size-md);
+  font-family: var(--fdnd-font);
+  border-radius: var(--basis-border-radius-md);
+  padding: 1em;
+}
+
+.default-button {
+  background-color: var(--basis-color-default-bg-document);
+  color: var(--basis-color-default-color-default);
+  border: solid 2px var(--basis-color-default-border-default);
+}
+
+.action1-button {
+  background-color: var(--basis-color-action-1-bg-document);
+  color: var(--basis-color-action-1-color-default);
+  border: solid 2px var(--basis-color-action-1-border-default);
+}
+
+.action1-inverse-button {
+  background-color: var(--basis-color-action-1-inverse-bg-document);
+  color: var(--basis-color-action-1-inverse-color-default);
+  border: solid 2px var(--basis-color-action-1-inverse-border-default);
+}
+
+.action2-button {
+  background-color: var(--basis-color-action-2-bg-document);
+  color: var(--basis-color-action-2-color-default);
+  border:  solid 2px var(--basis-color-action-2-border-default);
+}
+
+.action2-inverse-button {
+  background-color: var(--basis-color-action-2-inverse-bg-document);
+  color: var(--basis-color-action-2-inverse-color-default);
+  border: solid 2px var(--basis-color-action-2-inverse-border-default);
 }
