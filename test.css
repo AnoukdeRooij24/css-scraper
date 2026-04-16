@@ -99,3 +99,14 @@ button {
   color: var(--basis-color-action-2-inverse-color-default);
   border: solid 2px var(--basis-color-action-2-inverse-border-default);
 }
+
+.light-dark-check {
+  background-color: var(--basis-color-default-bg-document);
+  color: var(--basis-color-default-color-document);
+
+  font-family: var(--fdnd-font);
+  padding: 2em;
+  height: 200px;
+  width: 200px;
+  font-size: 24px;
+}

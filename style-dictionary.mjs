@@ -1,5 +1,6 @@
 import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
+import { readFile, writeFile } from "node:fs/promises";
 
 /**
  * Use the Tokens Studio preprocessor plugin to avoid broken references when working with Tokens Studio JSON.
@@ -12,5 +13,80 @@ register(StyleDictionary, {
   excludeParentKeys: true,
 });
 
-const sd = new StyleDictionary("config.json");
+const removeDarkMode = (dictionary) =>
+  Object.keys(dictionary).forEach((key) => {
+    console.log(key);
+    if (key.startsWith("color-scheme-dark/")) {
+      console.log(`Removing dark mode token: ${key}`);
+      /* eslint-disable-next-line @typescript-eslint/no-dynamic-delete */
+      delete dictionary[key];
+    }
+  });
+
+// const themeConfig = JSON.parse(await readFile("./config.json", "utf-8"));
+
+const createThemeConfig = ({ buildPath }) => {
+  return {
+    source: ["src/**/*.tokens.json"],
+    preprocessors: ["tokens-studio"],
+    log: {
+      verbosity: "verbose",
+    },
+    platforms: {
+      css: {
+        transformGroups: "tokens-studio",
+        transforms: ["name/kebab"],
+        buildPath,
+        files: [
+          {
+            destination: "theme.css",
+            format: "css/variables",
+            options: {
+              selector: ".fdnd-theme",
+              outputReferences: true,
+            },
+          },
+          {
+            destination: "variables.css",
+            format: "css/variables",
+            options: {
+              selector: ":root",
+              outputReferences: true,
+            },
+          },
+        ],
+      },
+    },
+  };
+};
+
+// verwijder de darkmode tokens uit de json en geef deze mee aan de lightmode 
+  // voor nu staat het nog verkeerd om, dit moet ik nog veranderen
+const colorSchemeDarkPreprocessor = {
+  name: "color-scheme-dark",
+  preprocessor(tokensJSON) {
+    removeDarkMode(tokensJSON);
+    return tokensJSON;
+  },
+};
+
+StyleDictionary.registerPreprocessor(colorSchemeDarkPreprocessor);
+
+// maak twee builds aan, een voor de lightmode (waar nu de darkmode tokens in staan) en een voor de darkmode (waar nu de lightmode instaan)
+  // de sdDark moet in de "dist/dark-mode/" komen en de sd moet in alleen de "dist/" komen
+const sd = new StyleDictionary({
+  ...createThemeConfig({ buildPath: "dist/dark-mode/" }),
+});
 await sd.buildAllPlatforms();
+
+const sdDark = new StyleDictionary({
+  ...createThemeConfig({ buildPath: "dist/" }),
+
+  preprocessors: [colorSchemeDarkPreprocessor.name, "tokens-studio"],
+});
+await sdDark.buildAllPlatforms();
+
+// zet er op de build bij dat het darkmode css bestand binnen een media query staat, zodat deze alleen wordt toegepast wanneer de gebruiker een voorkeur voor een donker kleurenschema heeft ingesteld
+let css = await readFile("./dist/dark-mode/variables.css", "utf-8");
+css = `@media (prefers-color-scheme: dark) {\n${css}\n}`;
+await writeFile("./dist/dark-mode/variables.css", css);
