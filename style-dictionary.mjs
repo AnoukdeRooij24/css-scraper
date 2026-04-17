@@ -61,28 +61,26 @@ const createThemeConfig = ({ buildPath }) => {
 };
 
 // verwijder de darkmode tokens uit de json en geef deze mee aan de lightmode 
-  // voor nu staat het nog verkeerd om, dit moet ik nog veranderen
-const colorSchemeDarkPreprocessor = {
-  name: "color-scheme-dark",
+const colorSchemeDefaultPreprocessor = {
+  name: "color-scheme-default",
   preprocessor(tokensJSON) {
     removeDarkMode(tokensJSON);
     return tokensJSON;
   },
 };
 
-StyleDictionary.registerPreprocessor(colorSchemeDarkPreprocessor);
+StyleDictionary.registerPreprocessor(colorSchemeDefaultPreprocessor);
 
 // maak twee builds aan, een voor de lightmode (waar nu de darkmode tokens in staan) en een voor de darkmode (waar nu de lightmode instaan)
-  // de sdDark moet in de "dist/dark-mode/" komen en de sd moet in alleen de "dist/" komen
 const sd = new StyleDictionary({
-  ...createThemeConfig({ buildPath: "dist/dark-mode/" }),
+  ...createThemeConfig({ buildPath: "dist/" }),
+  
+  preprocessors: [colorSchemeDefaultPreprocessor.name, "tokens-studio"],
 });
 await sd.buildAllPlatforms();
 
 const sdDark = new StyleDictionary({
-  ...createThemeConfig({ buildPath: "dist/" }),
-
-  preprocessors: [colorSchemeDarkPreprocessor.name, "tokens-studio"],
+  ...createThemeConfig({ buildPath: "dist/dark-mode/" }),
 });
 await sdDark.buildAllPlatforms();
 
