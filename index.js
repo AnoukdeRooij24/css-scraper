@@ -1,1 +1,1 @@
-export { default as tokens } from './src/fdnd.tokens.json'
+export { default as tokens } from "./src/fdnd.tokens.json";

@@ -60,7 +60,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 button {
@@ -91,7 +91,7 @@ button {
 .action2-button {
   background-color: var(--basis-color-action-2-bg-document);
   color: var(--basis-color-action-2-color-default);
-  border:  solid 2px var(--basis-color-action-2-border-default);
+  border: solid 2px var(--basis-color-action-2-border-default);
 }
 
 .action2-inverse-button {
