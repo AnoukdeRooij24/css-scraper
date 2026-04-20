@@ -60,7 +60,7 @@ const createThemeConfig = ({ buildPath }) => {
   };
 };
 
-// verwijder de darkmode tokens uit de json en geef deze mee aan de lightmode 
+// verwijder de darkmode tokens uit de json en geef deze mee aan de lightmode
 const colorSchemeDefaultPreprocessor = {
   name: "color-scheme-default",
   preprocessor(tokensJSON) {
@@ -74,7 +74,7 @@ StyleDictionary.registerPreprocessor(colorSchemeDefaultPreprocessor);
 // maak twee builds aan, een voor de lightmode en een voor de darkmode en zet dit in een tmp (temporary) map
 const sdLight = new StyleDictionary({
   ...createThemeConfig({ buildPath: "tmp/light-mode/" }),
-  
+
   preprocessors: [colorSchemeDefaultPreprocessor.name, "tokens-studio"],
 });
 await sdLight.buildAllPlatforms();
@@ -87,12 +87,22 @@ await sdDark.buildAllPlatforms();
 // aanmaken van de dist map
 await mkdir("dist/");
 
+const css = (strings) => strings.join("");
+
 // zoek de light en dark mode css bestanden en lees deze uit
 const cssDark = await readFile("./tmp/dark-mode/variables.css", "utf-8");
 const cssLight = await readFile("./tmp/light-mode/variables.css", "utf-8");
 
 // zet de lightmode in een de cssVariables, voeg een @media voor darkmode toe en zet daar de darkmode css in
-let cssVariables =`${cssLight} @media (prefers-color-scheme: dark) {\n${cssDark}\n}`;
+let cssVariables = css`
+  /* light mode here */
+
+  @media (prefers-color-scheme: dark) {
+    /* dark mode here */
+  }
+`
+  .replace("/* light mode here */", cssLight)
+  .replace("/* dark mode here */", cssDark);
 
 // voer de commando' in cssVariables uit en zet het in de dist map in het variables.css bestand
 await writeFile("./dist/variables.css", cssVariables);
