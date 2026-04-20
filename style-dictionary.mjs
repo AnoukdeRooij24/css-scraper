@@ -1,6 +1,6 @@
 import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile, mkdir } from "node:fs/promises";
 
 /**
  * Use the Tokens Studio preprocessor plugin to avoid broken references when working with Tokens Studio JSON.
@@ -71,20 +71,22 @@ const colorSchemeDefaultPreprocessor = {
 
 StyleDictionary.registerPreprocessor(colorSchemeDefaultPreprocessor);
 
-// maak twee builds aan, een voor de lightmode (waar nu de darkmode tokens in staan) en een voor de darkmode (waar nu de lightmode instaan)
+// maak twee builds aan, een voor de lightmode en een voor de darkmode
 const sd = new StyleDictionary({
-  ...createThemeConfig({ buildPath: "dist/" }),
+  ...createThemeConfig({ buildPath: "tmp/light-mode/" }),
   
   preprocessors: [colorSchemeDefaultPreprocessor.name, "tokens-studio"],
 });
 await sd.buildAllPlatforms();
 
 const sdDark = new StyleDictionary({
-  ...createThemeConfig({ buildPath: "dist/dark-mode/" }),
+  ...createThemeConfig({ buildPath: "tmp/dark-mode/" }),
 });
 await sdDark.buildAllPlatforms();
 
+await mkdir("dist/");
+
 // zet er op de build bij dat het darkmode css bestand binnen een media query staat, zodat deze alleen wordt toegepast wanneer de gebruiker een voorkeur voor een donker kleurenschema heeft ingesteld
-let css = await readFile("./dist/dark-mode/variables.css", "utf-8");
-css = `@media (prefers-color-scheme: dark) {\n${css}\n}`;
-await writeFile("./dist/dark-mode/variables.css", css);
+let css = await readFile("./tmp/dark-mode/variables.css", "utf-8");
+css = `@media (prefers-color-scheme: light-dark) {\n${css}\n}`;
+await writeFile("./dist/variables.css", css);

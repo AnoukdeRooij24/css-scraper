@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist tmp",
     "test": "echo \"Error: no test specified\" && exit 0",
     "lint": "prettier --check .",
     "lint-fix": "prettier --write .",
     "lint-build": "stylelint --config .stylelintrc.dist.json dist/*.css",
-    "build": "node style-dictionary.mjs"
+    "build": "pnpm run clean && node style-dictionary.mjs"
   },
   "keywords": [],
   "author": "Anouk de Rooij",
