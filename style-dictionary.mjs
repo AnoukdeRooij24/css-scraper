@@ -71,22 +71,28 @@ const colorSchemeDefaultPreprocessor = {
 
 StyleDictionary.registerPreprocessor(colorSchemeDefaultPreprocessor);
 
-// maak twee builds aan, een voor de lightmode en een voor de darkmode
-const sd = new StyleDictionary({
+// maak twee builds aan, een voor de lightmode en een voor de darkmode en zet dit in een tmp (temporary) map
+const sdLight = new StyleDictionary({
   ...createThemeConfig({ buildPath: "tmp/light-mode/" }),
   
   preprocessors: [colorSchemeDefaultPreprocessor.name, "tokens-studio"],
 });
-await sd.buildAllPlatforms();
+await sdLight.buildAllPlatforms();
 
 const sdDark = new StyleDictionary({
   ...createThemeConfig({ buildPath: "tmp/dark-mode/" }),
 });
 await sdDark.buildAllPlatforms();
 
+// aanmaken van de dist map
 await mkdir("dist/");
 
-// zet er op de build bij dat het darkmode css bestand binnen een media query staat, zodat deze alleen wordt toegepast wanneer de gebruiker een voorkeur voor een donker kleurenschema heeft ingesteld
-let css = await readFile("./tmp/dark-mode/variables.css", "utf-8");
-css = `@media (prefers-color-scheme: light-dark) {\n${css}\n}`;
-await writeFile("./dist/variables.css", css);
+// zoek de light en dark mode css bestanden en lees deze uit
+const cssDark = await readFile("./tmp/dark-mode/variables.css", "utf-8");
+const cssLight = await readFile("./tmp/light-mode/variables.css", "utf-8");
+
+// zet de lightmode in een de cssVariables, voeg een @media voor darkmode toe en zet daar de darkmode css in
+let cssVariables =`${cssLight} @media (prefers-color-scheme: dark) {\n${cssDark}\n}`;
+
+// voer de commando' in cssVariables uit en zet het in de dist map in het variables.css bestand
+await writeFile("./dist/variables.css", cssVariables);
