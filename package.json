@@ -37,6 +37,7 @@
     "vite": "^8.0.9"
   },
   "dependencies": {
+    "@nl-design-system-community/design-tokens-schema": "^2.1.0",
     "@nl-design-system-community/theme-wizard-server": "^1.2.2",
     "@tokens-studio/sd-transforms": "^2.0.3",
     "colorjs.io": "^0.6.1",

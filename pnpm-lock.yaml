@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@nl-design-system-community/design-tokens-schema':
+        specifier: ^2.1.0
+        version: 2.1.0
       '@nl-design-system-community/theme-wizard-server':
         specifier: ^1.2.2
         version: 1.2.2
