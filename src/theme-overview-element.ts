@@ -1,6 +1,8 @@
 import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { isSameColor } from "./compare-color";
+import { walkTokens, isRef } from '@nl-design-system-community/design-tokens-schema';
+import fdnd from './fdnd.tokens.json';
 
 // custom element <theme-overview> uit Lit
 @customElement("theme-overview")
@@ -41,6 +43,13 @@ export class ThemeOverview extends LitElement {
   render() {
     // TODO: Get color values from `fdnd.tokens.json`
     const niceColors = ["#9F77EE", "#89E2C1", "#FFFC96", "#05053F", "#ECECEC"];
+    // check welke kleur tokens er in de fdnd tokens staan, 
+    // met isRef kijk je of het referenties zijn naar andere kleuren, als dit niet waar is (! = not true) EN (&&) het type van de token is een kleur dan worden ze getoont
+    walkTokens(fdnd, (token) => { 
+        if (!isRef(token.$value)&&token.$type==='color'){
+            console.log(token)
+        }
+    });
 
     // TODO: first filter out all tokens that aren't even colors
     const evilTokens = this.json.filter(
