@@ -42,11 +42,12 @@ export class ThemeOverview extends LitElement {
 
   render() {
     // TODO: Get color values from `fdnd.tokens.json`
-    const niceColors = ["#9F77EE", "#89E2C1", "#FFFC96", "#05053F", "#ECECEC"];
+    const niceColors = [];
     // check welke kleur tokens er in de fdnd tokens staan, 
     // met isRef kijk je of het referenties zijn naar andere kleuren, als dit niet waar is (! = not true) EN (&&) het type van de token is een kleur dan worden ze getoont
     walkTokens(fdnd, (token) => { 
         if (!isRef(token.$value)&&token.$type==='color'){
+            niceColors.push(token.$value)
             console.log(token)
         }
     });
