@@ -1,8 +1,11 @@
 import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { isSameColor } from "./compare-color";
-import { walkTokens, isRef } from '@nl-design-system-community/design-tokens-schema';
-import fdnd from './fdnd.tokens.json';
+import {
+  walkTokens,
+  isRef,
+} from "@nl-design-system-community/design-tokens-schema";
+import fdnd from "./fdnd.tokens.json";
 
 // custom element <theme-overview> uit Lit
 @customElement("theme-overview")
@@ -42,14 +45,14 @@ export class ThemeOverview extends LitElement {
 
   render() {
     // TODO: Get color values from `fdnd.tokens.json`
-    const niceColors = [];
-    // check welke kleur tokens er in de fdnd tokens staan, 
+    let niceColors: unknown[] = [];
+    // check welke kleur tokens er in de fdnd tokens staan,
     // met isRef kijk je of het referenties zijn naar andere kleuren, als dit niet waar is (! = not true) EN (&&) het type van de token is een kleur dan worden ze getoont
-    walkTokens(fdnd, (token) => { 
-        if (!isRef(token.$value)&&token.$type==='color'){
-            niceColors.push(token.$value)
-            console.log(token)
-        }
+    walkTokens(fdnd, (token) => {
+      if (!isRef(token.$value) && token.$type === "color") {
+        niceColors = [...niceColors, token.$value];
+        console.log(token);
+      }
     });
 
     // TODO: first filter out all tokens that aren't even colors
@@ -57,20 +60,20 @@ export class ThemeOverview extends LitElement {
       (token) =>
         !niceColors.find((niceColor) =>
           isSameColor(
-            niceColor,
-            token["$extensions"][
+            String(niceColor),
+            String(token["$extensions"][
               "nl.nldesignsystem.theme-wizard.css-authored-as"
-            ],
+            ]),
           ),
         ),
     );
     const niceTokens = this.json.filter((token) =>
       niceColors.find((niceColor) =>
         isSameColor(
-          niceColor,
-          token["$extensions"][
+          String(niceColor),
+          String(token["$extensions"][
             "nl.nldesignsystem.theme-wizard.css-authored-as"
-          ],
+          ]),
         ),
       ),
     );
