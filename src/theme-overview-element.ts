@@ -100,7 +100,10 @@ export class ThemeOverview extends LitElement {
       </ul>
       <h2>nice tokens ❤️</h2>
       <ul>
-        ${niceTokens.map(
+        ${niceColors.length === 0 
+            ? html`<li style="color: black">Fout: Er worden geen kleuren uit het NL Design System gebruikt.</li>` 
+            : html `<li style="color: black"> Goed: ${niceColors.length} kleur tokens gevonden! </li>`}
+                    ${niceTokens.map(
           (token) =>
             html`<li
               style="color: ${token["$extensions"][
@@ -115,6 +118,7 @@ export class ThemeOverview extends LitElement {
               >
             </li>`,
         )}
+
       </ul>
       <h2>evil tokens!!!</h2>
       <ul>
