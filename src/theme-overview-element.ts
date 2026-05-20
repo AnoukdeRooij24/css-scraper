@@ -67,7 +67,7 @@ export class ThemeOverview extends LitElement {
           ),
         ),
     );
-    const niceTokens = this.json.filter((token) =>
+    const colors = this.json.filter((token) =>
       niceColors.find((niceColor) =>
         isSameColor(
           String(niceColor),
@@ -78,8 +78,7 @@ export class ThemeOverview extends LitElement {
       ),
     );
 
-    console.log({ tokens: this.json, evilTokens, niceTokens });
-    console.log( niceColors )
+    console.log({ tokens: this.json, evilTokens, colors });
 
     return html`<h2>tokens</h2>
       <ul>
@@ -101,14 +100,33 @@ export class ThemeOverview extends LitElement {
       </ul>
       <h2>Colors 🌈</h2>
       <ul>
-        ${niceColors.length === 0 
+        ${colors.length === 0 
             ? html`<li style="color: black">Fout: Er worden geen kleuren uit het NL Design System gebruikt.</li>` 
-            : html `<li style="color: black"> Goed: ${niceColors.length} kleur tokens gevonden! </li>`}
+            : html `<li style="color: black"> Goed: ${colors.length} kleur tokens gevonden! </li>`}
+      </ul>
+      <h2>nice tokens!!!</h2>
+      <ul>
+        ${colors
+          .map(
+            (token) =>
+              html`<li
+                style="color: ${token["$extensions"][
+                  "nl.nldesignsystem.theme-wizard.css-authored-as"
+                ]}"
+              >
+                token:
+                <code
+                  >${token["$extensions"][
+                    "nl.nldesignsystem.theme-wizard.css-authored-as"
+                  ]}</code
+                >
+              </li>`,
+          )}
       </ul>
       <h2>evil tokens!!!</h2>
       <ul>
         ${evilTokens
-          .filter((token) => token["$type"] === "color")
+        //   .filter((token) => token["$type"] === "color")
           .map(
             (token) =>
               html`<li
