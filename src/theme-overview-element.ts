@@ -46,11 +46,15 @@ export class ThemeOverview extends LitElement {
   render() {
     // TODO: Get color values from `fdnd.tokens.json`
     let niceColors: unknown[] = [];
+    let niceFonts: unknown [] = [];
     // check welke kleur tokens er in de fdnd tokens staan,
     // met isRef kijk je of het referenties zijn naar andere kleuren, als dit niet waar is (! = not true) EN (&&) het type van de token is een kleur dan worden ze getoont
     walkTokens(fdnd, (token) => {
       if (!isRef(token.$value) && token.$type === "color") {
         niceColors = [...niceColors, token.$value];
+        console.log(token);
+      } else if (!isRef(token.$value) && token["$type"] === "fontFamily"){
+        niceFonts = [...niceFonts, token.$value];
         console.log(token);
       }
     });
@@ -78,7 +82,7 @@ export class ThemeOverview extends LitElement {
       ),
     );
 
-    console.log({ tokens: this.json, evilTokens, colors });
+    console.log({ tokens: this.json, evilTokens, colors, niceFonts });
 
     return html`<h2>tokens</h2>
       <ul>
@@ -104,7 +108,13 @@ export class ThemeOverview extends LitElement {
             ? html`<li style="color: black">Fout: Er worden geen kleuren uit het NL Design System gebruikt.</li>` 
             : html `<li style="color: black"> Goed: Er worden ${colors.length} kleur tokens uit het NL Design System gebruikt! </li>`}
       </ul>
-      <h2>nice tokens!!!</h2>
+      <h2>Font families 🔤</h2>
+      <ul>
+        ${niceFonts.length === 0 
+            ? html`<li style="color: black">Fout: Er worden geen fonts uit het NL Design System gebruikt.</li>` 
+            : html `<li style="color: black"> Goed: Er worden ${niceFonts.length} font tokens uit het NL Design System gebruikt! </li>`}
+      </ul>
+      <h2>nice colors!!!</h2>
       <ul>
         ${colors
           .map(
@@ -126,7 +136,7 @@ export class ThemeOverview extends LitElement {
       <h2>evil tokens!!!</h2>
       <ul>
         ${evilTokens
-        //   .filter((token) => token["$type"] === "color")
+        //   .filter((token) => token["$type"] === "fontFamily")
           .map(
             (token) =>
               html`<li
