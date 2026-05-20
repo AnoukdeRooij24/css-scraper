@@ -102,7 +102,7 @@ export class ThemeOverview extends LitElement {
       <ul>
         ${colors.length === 0 
             ? html`<li style="color: black">Fout: Er worden geen kleuren uit het NL Design System gebruikt.</li>` 
-            : html `<li style="color: black"> Goed: ${colors.length} kleur tokens gevonden! </li>`}
+            : html `<li style="color: black"> Goed: Er worden ${colors.length} kleur tokens uit het NL Design System gebruikt! </li>`}
       </ul>
       <h2>nice tokens!!!</h2>
       <ul>
