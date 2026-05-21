@@ -1,21 +1,79 @@
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" href="./dist/variables.css" />
-        <link rel="stylesheet" href="test.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet"
-        />
-        <script type="module">
-        import "./src/index.ts";
-        </script>
-    </head>
-    <body>
-        <theme-overview></theme-overview>
-    </body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/variables.css" />
+    <link rel="stylesheet" href="test.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module">
+      import "./src/index.ts";
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>CSS scraper</h1>
+    </header>
+    <article>
+      <h2>Upload information</h2>
+      <label>
+        Upload URL:
+        <input type="url" required />
+      </label>
+      <label>
+        Upload JSON:
+        <input type="file" required />
+      </label>
+      <button>Scrape!</button>
+    </article>
+    <h2>Results</h2>
+    <theme-overview></theme-overview>
+  </body>
+
+  <style>
+    header {
+      background: #803d95;
+      color: #fff;
+      padding: 1rem;
+    }
+
+    body {
+      background: #f3e7f7;
+    }
+
+    article {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-family: var(--fdnd-font);
+      margin: 0.5rem;
+    }
+
+    label {
+      font-size: 1rem;
+      font-family: var(--fdnd-font);
+      margin: 0.5rem;
+    }
+
+    button {
+      width: fit-content;
+      background: #803d95;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      padding: 12px 16px;
+      margin: 0.5rem;
+    }
+  </style>
+</html>

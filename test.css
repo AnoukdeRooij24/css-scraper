@@ -1,6 +1,8 @@
-/* body {
-  background-color: var(--basis-color-default-bg-document);
-} */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 div {
   height: 300px;
