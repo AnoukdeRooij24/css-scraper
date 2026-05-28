@@ -52,26 +52,12 @@ export class ThemeOverview extends LitElement {
     walkTokens(fdnd, (token) => {
       if (!isRef(token.$value) && token.$type === "color") {
         niceColors = [...niceColors, token.$value];
-        console.log(token);
-      } else if (!isRef(token.$value) && token["$type"] === "fontFamily"){
+      } else if (!isRef(token.$value) && token["$type"] === "fontFamilies"){
         niceFonts = [...niceFonts, token.$value];
-        console.log(token);
-      }
-    });
+    }}
+  );
 
-    // TODO: first filter out all tokens that aren't even colors
-    const evilTokens = this.json.filter(
-      (token) =>
-        !niceColors.find((niceColor) =>
-          isSameColor(
-            String(niceColor),
-            String(token["$extensions"][
-                "nl.nldesignsystem.theme-wizard.css-authored-as"
-            ]),
-          ),
-        ),
-    );
-    const colors = this.json.filter((token) =>
+    const colors = this.json.filter(token => token.$type === "color").filter((token) =>
       niceColors.find((niceColor) =>
         isSameColor(
           String(niceColor),
@@ -81,8 +67,20 @@ export class ThemeOverview extends LitElement {
         ),
       ),
     );
+      const fontFamilies = this.json.filter(token => token.$type === "fontFamily").filter((token) =>{
+        // console.log(token);
+      return niceFonts.find((niceFont) =>
+        niceFont === token.$value.at(0)
+      )
+    }
+    );
+    // TODO: first filter out all tokens that aren't even colors
+    const evilTokens = this.json.filter(
+      (token) => !colors.includes(token) && !fontFamilies.includes(token)
+    );
 
-    console.log({ tokens: this.json, evilTokens, colors, niceFonts });
+
+    // console.log({ tokens: this.json, evilTokens, colors, niceFonts });
 
     return html` 
     <style> 
@@ -127,12 +125,12 @@ export class ThemeOverview extends LitElement {
         <h3>Font families</h2>
         <ul>
         ${
-          niceFonts.length === 0
+          fontFamilies.length === 0
             ? html`<li>
                 ❌ Fout: Er worden geen fonts uit het NL Design System gebruikt.
               </li>`
             : html`<li>
-                ✅ Goed: Er worden ${niceFonts.length} font tokens uit het NL
+                ✅ Goed: Er worden ${fontFamilies.length} font tokens uit het NL
                 Design System gebruikt!
               </li>`
         }
