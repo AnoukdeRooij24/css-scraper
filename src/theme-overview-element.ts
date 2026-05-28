@@ -47,6 +47,7 @@ export class ThemeOverview extends LitElement {
     // TODO: Get color values from `fdnd.tokens.json`
     let niceColors: unknown[] = [];
     let niceFonts: unknown [] = [];
+    let niceSizes: unknown[] = [];
     // check welke kleur tokens er in de fdnd tokens staan,
     // met isRef kijk je of het referenties zijn naar andere kleuren, als dit niet waar is (! = not true) EN (&&) het type van de token is een kleur dan worden ze getoont
     walkTokens(fdnd, (token) => {
@@ -54,8 +55,11 @@ export class ThemeOverview extends LitElement {
         niceColors = [...niceColors, token.$value];
       } else if (!isRef(token.$value) && token["$type"] === "fontFamilies"){
         niceFonts = [...niceFonts, token.$value];
-    }}
-  );
+    } else if (!isRef(token.$value) && token["$type"] === "dimension"){
+        niceSizes = [...niceSizes, token.$value];
+        console.log(token);
+    }
+  });
 
     const colors = this.json.filter(token => token.$type === "color").filter((token) =>
       niceColors.find((niceColor) =>
@@ -74,9 +78,17 @@ export class ThemeOverview extends LitElement {
       )
     }
     );
+      const fontSize = this.json.filter(token => token.$type === "dimension").filter((token) =>{
+        console.log(token);
+      return niceSizes.find((niceSize) =>
+        niceSize === `${token.$value.value}${token.$value.unit}`    
+      )
+    }
+    );
+
     // TODO: first filter out all tokens that aren't even colors
     const evilTokens = this.json.filter(
-      (token) => !colors.includes(token) && !fontFamilies.includes(token)
+      (token) => !colors.includes(token) && !fontFamilies.includes(token) && !fontSize.includes(token)
     );
 
 
@@ -131,6 +143,22 @@ export class ThemeOverview extends LitElement {
               </li>`
             : html`<li>
                 ✅ Goed: Er worden ${fontFamilies.length} font tokens uit het NL
+                Design System gebruikt!
+              </li>`
+        }
+        </ul>
+    </article>
+
+    <article> 
+        <h3>Font sizes</h2>
+        <ul>
+        ${
+          fontSize.length === 0
+            ? html`<li>
+                ❌ Fout: Er worden geen fonts uit het NL Design System gebruikt.
+              </li>`
+            : html`<li>
+                ✅ Goed: Er worden ${fontSize.length} font tokens uit het NL
                 Design System gebruikt!
               </li>`
         }
