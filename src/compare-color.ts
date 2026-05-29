@@ -6,6 +6,10 @@ import Color from "colorjs.io";
 export const isSameColor = (colorA: string, colorB: string) => {
   let a, b;
 
+  if (colorA === colorB) {
+    return true;
+  }
+
   try {
     a = new Color(colorA);
   } catch (e) {
