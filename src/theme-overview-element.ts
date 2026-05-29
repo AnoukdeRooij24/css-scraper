@@ -174,7 +174,7 @@ export class ThemeOverview extends LitElement {
         </ul>
     </article>
     <details>
-      <summary>Bekijk hier de tokens zonder match </summary>
+      <summary>Bekijk hier de ${evilTokens.length} tokens zonder match </summary>
       <ul>
         ${evilTokens
           .map(
