@@ -46,51 +46,61 @@ export class ThemeOverview extends LitElement {
   render() {
     // TODO: Get color values from `fdnd.tokens.json`
     let niceColors: unknown[] = [];
-    let niceFonts: unknown [] = [];
+    let niceFonts: unknown[] = [];
     let niceSizes: unknown[] = [];
     // check welke kleur tokens er in de fdnd tokens staan,
     // met isRef kijk je of het referenties zijn naar andere kleuren, als dit niet waar is (! = not true) EN (&&) het type van de token is een kleur dan worden ze getoont
     walkTokens(fdnd, (token) => {
       if (!isRef(token.$value) && token.$type === "color") {
         niceColors = [...niceColors, token.$value];
-      } else if (!isRef(token.$value) && token["$type"] === "fontFamilies"){
+      } else if (!isRef(token.$value) && token["$type"] === "fontFamilies") {
         niceFonts = [...niceFonts, token.$value];
-    } else if (!isRef(token.$value) && token["$type"] === "dimension"){
+      } else if (!isRef(token.$value) && token["$type"] === "dimension") {
         niceSizes = [...niceSizes, token.$value];
         console.log(token);
-    }
-  });
+      }
+    });
 
-    const colors = this.json.filter(token => token.$type === "color").filter((token) =>
-      niceColors.find((niceColor) =>
-        isSameColor(
-          String(niceColor),
-          String(token["$extensions"][
-              "nl.nldesignsystem.theme-wizard.css-authored-as"
-          ]),
+    const colors = this.json
+      .filter((token) => token.$type === "color")
+      .filter((token) =>
+        niceColors.find((niceColor) =>
+          isSameColor(
+            String(niceColor),
+            String(
+              token["$extensions"][
+                "nl.nldesignsystem.theme-wizard.css-authored-as"
+              ],
+            ),
+          ),
         ),
-      ),
-    );
-      const fontFamilies = this.json.filter(token => token.$type === "fontFamily").filter((token) =>{
+      );
+    const fontFamilies = this.json
+      .filter((token) => token.$type === "fontFamily")
+      .filter((token) => {
         // console.log(token);
-      return niceFonts.find((niceFont) =>
-        niceFont === token.$value.at(0)
-      )
-    }
-    );
-      const fontSize = this.json.filter(token => token.$type === "dimension").filter((token) =>{
+        return niceFonts.find((niceFont) => niceFont === token.$value.at(0));
+      });
+    const fontSize = this.json
+      .filter((token) => token.$type === "dimension")
+      .filter((token) => {
         console.log(token);
-      return niceSizes.find((niceSize) =>
-        niceSize === `${token.$value.value}${token.$value.unit}`    
-      )
-    }
-    );
+        return niceSizes.find(
+          (niceSize) =>
+            niceSize === `${token.$value.value}${token.$value.unit}`,
+        );
+      });
 
     // TODO: first filter out all tokens that aren't even colors
     const evilTokens = this.json.filter(
-      (token) => !colors.includes(token) && !fontFamilies.includes(token) && !fontSize.includes(token)
+      (token) =>
+        !colors.includes(token) &&
+        !fontFamilies.includes(token) &&
+        !fontSize.includes(token),
     );
 
+    // een evilTokens array die leeg is om de melding te testen als er geen tokens staan in de evilTokens
+    // const evilTokens = []
 
     // console.log({ tokens: this.json, evilTokens, colors, niceFonts });
 
@@ -103,18 +113,27 @@ export class ThemeOverview extends LitElement {
             margin: 0.5rem;
             color: black;
             max-width: 500px;
+            font-family: var(--fdnd-font);
         }
         h3 {
             font-size: 1.25rem;
-            font-family: var(--fdnd-font);
             margin: 0.5rem;
         }
         ul {
             font-size: 1rem;
-            font-family: var(--fdnd-font);
             list-style: none;
             margin: 0.5rem;
             padding: 0;
+        }
+        details {
+          margin: 0.5rem;
+          padding: 0.5rem;
+          font-family: var(--fdnd-font);
+        }
+        summary {
+          font-size: 1.25rem;
+          font-weight: 600;
+
         }
     </style>
     <article> 
@@ -139,11 +158,12 @@ export class ThemeOverview extends LitElement {
         ${
           fontFamilies.length === 0
             ? html`<li>
-                ❌ Fout: Er worden geen fonts uit het NL Design System gebruikt.
+                ❌ Fout: Er worden geen font families uit het NL Design System
+                gebruikt.
               </li>`
             : html`<li>
-                ✅ Goed: Er worden ${fontFamilies.length} font tokens uit het NL
-                Design System gebruikt!
+                ✅ Goed: Er worden ${fontFamilies.length} font family tokens uit
+                het NL Design System gebruikt!
               </li>`
         }
         </ul>
@@ -155,73 +175,42 @@ export class ThemeOverview extends LitElement {
         ${
           fontSize.length === 0
             ? html`<li>
-                ❌ Fout: Er worden geen fonts uit het NL Design System gebruikt.
+                ❌ Fout: Er worden geen font sizes uit het NL Design System
+                gebruikt.
               </li>`
             : html`<li>
-                ✅ Goed: Er worden ${fontSize.length} font tokens uit het NL
-                Design System gebruikt!
+                ✅ Goed: Er worden ${fontSize.length} font size tokens uit het
+                NL Design System gebruikt!
               </li>`
         }
         </ul>
     </article>
-
-      <h3>tokens</h2>
-      <ul>
-        ${this.json.map(
-          (token) =>
-            html`<li
-              style="color: ${token["$extensions"][
-                "nl.nldesignsystem.theme-wizard.css-authored-as"
-              ]}"
-            >
-              token:
-              <code
-                >${token["$extensions"][
-                  "nl.nldesignsystem.theme-wizard.css-authored-as"
-                ]}</code
-              >
-            </li>`,
-        )}
-      </ul>
-      <h3>nice colors!!!</h2>
-      <ul>
-        ${colors
-          .map(
-          (token) =>
-            html`<li
-              style="color: ${token["$extensions"][
-                "nl.nldesignsystem.theme-wizard.css-authored-as"
-              ]}"
-            >
-              token:
-              <code
-                >${token["$extensions"][
-                  "nl.nldesignsystem.theme-wizard.css-authored-as"
-                ]}</code
-              >
-            </li>`,
-        )}
-      </ul>
-      <h3>evil tokens!!!</h2>
-      <ul>
-        ${evilTokens
-          //   .filter((token) => token["$type"] === "fontFamily")
-          .map(
-            (token) =>
-              html`<li
-                style="color: ${token["$extensions"][
-                  "nl.nldesignsystem.theme-wizard.css-authored-as"
-                ]}"
-              >
-                token:
-                <code
-                  >${token["$extensions"][
-                    "nl.nldesignsystem.theme-wizard.css-authored-as"
-                  ]}</code
-                >
-              </li>`,
-          )}
-      </ul>`;
+    <details>
+        ${
+          evilTokens.length === 0
+            ? html`<summary>Geen tokens zonder match gevonden</summary>
+                <p>
+                  Alle tokens uit de CSS komen overeen met een token uit het NL
+                  Design System!
+                </p>`
+            : html` <summary>
+                  Bekijk hier de ${evilTokens.length} tokens zonder match
+                </summary>
+                <ul>
+                  ${evilTokens.map(
+                    (token) =>
+                      html`<li>
+                        ${token.$type} token:
+                        <code
+                          >${token["$extensions"][
+                            "nl.nldesignsystem.theme-wizard.css-authored-as"
+                          ]}</code
+                        >
+                      </li>`,
+                  )}
+                </ul>`
+        }
+    </details>`;
   }
 }
 
