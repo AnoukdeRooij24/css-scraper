@@ -91,6 +91,8 @@ export class ThemeOverview extends LitElement {
       (token) => !colors.includes(token) && !fontFamilies.includes(token) && !fontSize.includes(token)
     );
 
+    // een evilTokens array die leeg is om de melding te testen als er geen tokens staan in de evilTokens 
+    // const evilTokens = []
 
     // console.log({ tokens: this.json, evilTokens, colors, niceFonts });
 
@@ -174,23 +176,29 @@ export class ThemeOverview extends LitElement {
         </ul>
     </article>
     <details>
-      <summary>Bekijk hier de ${evilTokens.length} tokens zonder match </summary>
-      <ul>
-        ${evilTokens
-          .map(
-            (token) =>
-              html`<li>
-                ${token.$type}
-                token:
-                <code
-                  >${token["$extensions"][
-                    "nl.nldesignsystem.theme-wizard.css-authored-as"
-                  ]}</code
-                >
-              </li>`,
-          )}
-      </ul>
-      </details>`;
+        ${
+          evilTokens.length === 0
+          ? html `<summary> Geen tokens zonder match gevonden </summary>
+                  <p>Alle tokens uit de CSS komen overeen met een token uit het NL Design System!</p>`
+          : html`
+                <summary>Bekijk hier de ${evilTokens.length} tokens zonder match </summary>
+                <ul>
+                  ${evilTokens
+                    .map(
+                      (token) =>
+                        html`<li>
+                          ${token.$type}
+                          token:
+                          <code
+                            >${token["$extensions"][
+                              "nl.nldesignsystem.theme-wizard.css-authored-as"
+                            ]}</code
+                          >
+                        </li>`,
+                    )}
+                </ul>`
+        }
+    </details>`;
   }
 }
 
