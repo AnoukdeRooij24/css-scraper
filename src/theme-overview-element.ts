@@ -180,6 +180,7 @@ export class ThemeOverview extends LitElement {
           .map(
             (token) =>
               html`<li>
+                ${token.$type}
                 token:
                 <code
                   >${token["$extensions"][
