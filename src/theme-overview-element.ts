@@ -103,18 +103,27 @@ export class ThemeOverview extends LitElement {
             margin: 0.5rem;
             color: black;
             max-width: 500px;
+            font-family: var(--fdnd-font);
         }
         h3 {
             font-size: 1.25rem;
-            font-family: var(--fdnd-font);
             margin: 0.5rem;
         }
         ul {
             font-size: 1rem;
-            font-family: var(--fdnd-font);
             list-style: none;
             margin: 0.5rem;
             padding: 0;
+        }
+        details {
+          margin: 0.5rem;
+          padding: 0.5rem;
+          font-family: var(--fdnd-font);
+        }
+        summary {
+          font-size: 1.25rem;
+          font-weight: 600;
+
         }
     </style>
     <article> 
@@ -164,55 +173,13 @@ export class ThemeOverview extends LitElement {
         }
         </ul>
     </article>
-
-      <h3>tokens</h2>
-      <ul>
-        ${this.json.map(
-          (token) =>
-            html`<li
-              style="color: ${token["$extensions"][
-                "nl.nldesignsystem.theme-wizard.css-authored-as"
-              ]}"
-            >
-              token:
-              <code
-                >${token["$extensions"][
-                  "nl.nldesignsystem.theme-wizard.css-authored-as"
-                ]}</code
-              >
-            </li>`,
-        )}
-      </ul>
-      <h3>nice colors!!!</h2>
-      <ul>
-        ${colors
-          .map(
-          (token) =>
-            html`<li
-              style="color: ${token["$extensions"][
-                "nl.nldesignsystem.theme-wizard.css-authored-as"
-              ]}"
-            >
-              token:
-              <code
-                >${token["$extensions"][
-                  "nl.nldesignsystem.theme-wizard.css-authored-as"
-                ]}</code
-              >
-            </li>`,
-        )}
-      </ul>
-      <h3>evil tokens!!!</h2>
+    <details>
+      <summary>Bekijk hier de tokens zonder match </summary>
       <ul>
         ${evilTokens
-          //   .filter((token) => token["$type"] === "fontFamily")
           .map(
             (token) =>
-              html`<li
-                style="color: ${token["$extensions"][
-                  "nl.nldesignsystem.theme-wizard.css-authored-as"
-                ]}"
-              >
+              html`<li>
                 token:
                 <code
                   >${token["$extensions"][
@@ -221,7 +188,8 @@ export class ThemeOverview extends LitElement {
                 >
               </li>`,
           )}
-      </ul>`;
+      </ul>
+      </details>`;
   }
 }
 
