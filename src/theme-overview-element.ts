@@ -148,7 +148,7 @@ export class ThemeOverview extends LitElement {
         ${
           fontFamilies.length === 0
             ? html`<li>
-                ❌ Fout: Er worden geen fonts uit het NL Design System gebruikt.
+                ❌ Fout: Er worden geen font families uit het NL Design System gebruikt.
               </li>`
             : html`<li>
                 ✅ Goed: Er worden ${fontFamilies.length} font tokens uit het NL
@@ -164,7 +164,7 @@ export class ThemeOverview extends LitElement {
         ${
           fontSize.length === 0
             ? html`<li>
-                ❌ Fout: Er worden geen fonts uit het NL Design System gebruikt.
+                ❌ Fout: Er worden geen font sizes uit het NL Design System gebruikt.
               </li>`
             : html`<li>
                 ✅ Goed: Er worden ${fontSize.length} font tokens uit het NL
