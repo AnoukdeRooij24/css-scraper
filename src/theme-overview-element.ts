@@ -181,7 +181,7 @@ export class ThemeOverview extends LitElement {
               </p>`
         }
     </article>
-    <details>
+    <details name="Overige tokens">
         ${
           evilTokens.length === 0
             ? html`<summary>Geen tokens zonder match gevonden</summary>
