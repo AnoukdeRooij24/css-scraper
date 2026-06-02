@@ -121,9 +121,11 @@ export class ThemeOverview extends LitElement {
         }
         ul {
             font-size: 1rem;
-            list-style: none;
             margin: 0.5rem;
             padding: 0;
+        }
+        p {
+            margin: 0.5rem;
         }
         details {
           margin: 0.5rem;
@@ -138,52 +140,46 @@ export class ThemeOverview extends LitElement {
     </style>
     <article> 
         <h3>Colors</h2>
-        <ul>
-            ${
-              colors.length === 0
-                ? html`<li>
-                    ❌ Fout: Er worden geen kleuren uit het NL Design System
-                    gebruikt.
-                  </li>`
-                : html`<li>
-                    ✅ Goed: Er worden ${colors.length} kleur tokens uit het NL
-                    Design System gebruikt!
-                  </li>`
-            }
-        </ul>
+          ${
+            colors.length === 0
+              ? html`<p>
+                  ❌ Fout: Er worden geen kleuren uit het NL Design System
+                  gebruikt.
+                </p>`
+              : html`<p>
+                  ✅ Goed: Er worden ${colors.length} kleur tokens uit het NL
+                  Design System gebruikt!
+                </p>`
+          }
     </article>
     <article> 
         <h3>Font families</h2>
-        <ul>
         ${
           fontFamilies.length === 0
-            ? html`<li>
+            ? html`<p>
                 ❌ Fout: Er worden geen font families uit het NL Design System
                 gebruikt.
-              </li>`
-            : html`<li>
+              </p>`
+            : html`<p>
                 ✅ Goed: Er worden ${fontFamilies.length} font family tokens uit
                 het NL Design System gebruikt!
-              </li>`
+              </p>`
         }
-        </ul>
     </article>
 
     <article> 
         <h3>Font sizes</h2>
-        <ul>
         ${
           fontSize.length === 0
-            ? html`<li>
+            ? html`<p>
                 ❌ Fout: Er worden geen font sizes uit het NL Design System
                 gebruikt.
-              </li>`
-            : html`<li>
+              </p>`
+            : html`<p>
                 ✅ Goed: Er worden ${fontSize.length} font size tokens uit het
                 NL Design System gebruikt!
-              </li>`
+              </p>`
         }
-        </ul>
     </article>
     <details>
         ${
