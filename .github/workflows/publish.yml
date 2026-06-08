@@ -44,13 +44,11 @@ jobs:
       - name: Build
         run: pnpm run --if-present build
 
-      - name: Publish to the npm Registry
-        uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Upload artefact for GitHub Pages
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
-          commit: "docs: changelog for release"
-          setupGitUser: false
-          title: "docs: changelog for release"
-          publish: "pnpm exec changeset publish"
+          path: dist/
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
+        id: deploy-pages

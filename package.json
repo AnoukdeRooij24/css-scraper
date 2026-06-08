@@ -12,7 +12,7 @@
     "lint-fix": "prettier --write .",
     "lint-build": "stylelint --config .stylelintrc.dist.json dist/*.css",
     "dev": "vite",
-    "build": "pnpm run clean && node style-dictionary.mjs"
+    "build": "pnpm run clean && node style-dictionary.mjs && vite build"
   },
   "keywords": [],
   "author": "Anouk de Rooij",
