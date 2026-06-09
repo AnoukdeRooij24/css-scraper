@@ -10,5 +10,5 @@ export default defineConfig({
       },
     },
   },
-    base: '/stage-anouk/'
+  base: "/stage-anouk/",
 });
