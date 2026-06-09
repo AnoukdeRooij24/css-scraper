@@ -85,7 +85,7 @@ const sdDark = new StyleDictionary({
 await sdDark.buildAllPlatforms();
 
 // aanmaken van de dist map
-await mkdir("dist/");
+await mkdir("dist/", { recursive: true });
 
 const css = (strings) => strings.join("");
 
