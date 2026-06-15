@@ -47,6 +47,8 @@ jobs:
         run: pnpm run --if-present test
 
       - name: Build
+        env:
+          BASE_URL: "/css-scraper/"
         run: pnpm run --if-present build
 
       - name: Upload artefact for GitHub Pages
