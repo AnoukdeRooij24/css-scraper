@@ -30,6 +30,9 @@ importers:
       '@nl-design-system/tsconfig':
         specifier: ^1.0.5
         version: 1.0.5(typescript@6.0.3)
+      '@types/node':
+        specifier: ^25.9.3
+        version: 25.9.3
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
@@ -53,7 +56,7 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.0.9
-        version: 8.0.9(yaml@2.8.3)
+        version: 8.0.9(@types/node@25.9.3)(yaml@2.8.3)
 
 packages:
 
@@ -558,6 +561,9 @@ packages:
 
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
+
+  '@types/node@25.9.3':
+    resolution: {integrity: sha512-603BddQMv3pUcr4U2dhujk83N2tTDVr/34wII2B6bJy6g+8WD6yUb11jszNs0gdi4PesVWl7ABt8nYMVpnLUcg==}
 
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
@@ -1767,6 +1773,9 @@ packages:
   uhyphen@0.2.0:
     resolution: {integrity: sha512-qz3o9CHXmJJPGBdqzab7qAYuW8kQGKNEuoHFYrBwV6hWIMcpAmxDLXojcHfFr9US1Pe6zUswEIJIbLI610fuqA==}
 
+  undici-types@7.24.6:
+    resolution: {integrity: sha512-WRNW+sJgj5OBN4/0JpHFqtqzhpbnV0GuB+OozA9gCL7a993SmU+1JBZCzLNxYsbMfIeDL+lTsphD5jN5N+n0zg==}
+
   unicorn-magic@0.4.0:
     resolution: {integrity: sha512-wH590V9VNgYH9g3lH9wWjTrUoKsjLF6sGLjhR4sH1LWpLmCOH0Zf7PukhDA8BiS7KHe4oPNkcTHqYkj7SOGUOw==}
     engines: {node: '>=20'}
@@ -2470,6 +2479,10 @@ snapshots:
     optional: true
 
   '@types/node@12.20.55': {}
+
+  '@types/node@25.9.3':
+    dependencies:
+      undici-types: 7.24.6
 
   '@types/trusted-types@2.0.7': {}
 
@@ -3645,6 +3658,8 @@ snapshots:
 
   uhyphen@0.2.0: {}
 
+  undici-types@7.24.6: {}
+
   unicorn-magic@0.4.0: {}
 
   union@0.5.0:
@@ -3679,7 +3694,7 @@ snapshots:
       is-typed-array: 1.1.15
       which-typed-array: 1.1.20
 
-  vite@8.0.9(yaml@2.8.3):
+  vite@8.0.9(@types/node@25.9.3)(yaml@2.8.3):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -3687,6 +3702,7 @@ snapshots:
       rolldown: 1.0.0-rc.16
       tinyglobby: 0.2.16
     optionalDependencies:
+      '@types/node': 25.9.3
       fsevents: 2.3.3
       yaml: 2.8.3
 
