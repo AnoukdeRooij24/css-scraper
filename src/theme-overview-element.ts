@@ -28,7 +28,7 @@ export class ThemeOverview extends LitElement {
   async analyse() {
     // scraper server must have been started using `pnpm run start:scraper`
     // TODO: make `url` configurable
-    const data = await fetch(scraperUrl + "/scraper/api/v1/css-design-tokens?url=fdnd.nl");
+    const data = await fetch(scraperUrl + "/api/v1/css-design-tokens?url=fdnd.nl");
 
     // Parse `json` from scraper result
     const tokens = await data.json();
