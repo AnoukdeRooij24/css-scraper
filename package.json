@@ -43,6 +43,7 @@
     "@nl-design-system-community/design-tokens-schema": "^2.1.0",
     "@nl-design-system-community/theme-wizard-server": "^1.2.2",
     "@tokens-studio/sd-transforms": "^2.0.3",
+    "@vercel/related-projects": "^1.1.0",
     "colorjs.io": "^0.6.1",
     "lit": "^3.3.2"
   },
